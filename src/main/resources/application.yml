@@ -11,7 +11,7 @@ spring:
 
   # PRES SQL Server datasource Properties
   datasource:
-    url: jdbc:mysql://localhost:3306/jpa_test
+    url: jdbc:mysql://localhost:33061/jpa_test
     username: root
     password: Test@2020
     driver-class-name: com.mysql.cj.jdbc.Driver

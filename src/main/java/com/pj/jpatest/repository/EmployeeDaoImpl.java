@@ -7,7 +7,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Random;
 
-public class CustomEmployeeRepositoryImpl implements CustomEmployeeRepository {
+public class EmployeeDaoImpl implements EmployeeDao {
   @PersistenceContext
   private EntityManager entityManager;
 
