@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Random;
 
+/**
+ * Provides a REST API endpoints for the Person entity.
+ *
+ * @author Pavan Kumar Jadda
+ * @since 1.0.0
+ */
 @RestController
 @RequestMapping("/api/v1/person")
 public class PersonController {
@@ -18,7 +24,14 @@ public class PersonController {
         this.personRepository = personRepository;
     }
 
-
+    /**
+     * Create a new Person record and save it to the database.
+     *
+     * @return the newly created Person
+     *
+     * @author Pavan Kumar Jadda
+     * @since 1.0.0
+     */
     @GetMapping("/create")
     public Person create() {
         Person person = new Person();

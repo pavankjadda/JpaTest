@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * Provides a REST API endpoints for the Employee entity.
+ *
+ * @author Pavan Kumar Jadda
+ * @since 1.0.0
+ */
 @RestController
 @RequestMapping("/api/v1/employee")
 public class EmployeeController {
@@ -18,6 +24,14 @@ public class EmployeeController {
     this.employeeService = employeeService;
   }
 
+  /**
+   * Find all Employees in the database.
+   *
+   * @return list of Employees or an empty list if no Employees are found
+   *
+   * @author Pavan Kumar Jadda
+   * @since 1.0.0
+   */
   @GetMapping("/find/all")
   public List<Employee> findAll() {
     return employeeService.findAllCustomRepository();
@@ -29,6 +43,14 @@ public class EmployeeController {
   }
 
 
+  /**
+   * Create a new Employee and persist it to the database.
+   *
+   * @return the newly created Employee
+   *
+   * @author Pavan Kumar Jadda
+   * @since 1.0.0
+   */
   @GetMapping("/create")
   public Employee createNewEmployee() {
     return employeeService.createNewEmployee();
