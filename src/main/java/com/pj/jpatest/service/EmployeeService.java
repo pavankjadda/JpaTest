@@ -2,6 +2,7 @@ package com.pj.jpatest.service;
 
 
 import com.pj.jpatest.domain.Employee;
+import com.pj.jpatest.dto.EmployeeDTO;
 import com.pj.jpatest.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,6 +61,18 @@ public class EmployeeService {
      */
     public List<Employee> findAllCustomRepository() {
         return employeeRepository.findAllCustomRepository();
+    }
+
+    /**
+     * Find all Employees in the database.
+     *
+     * @return list of Employees or an empty list if no Employees are found
+     *
+     * @author Pavan Kumar Jadda
+     * @since 1.0.0
+     */
+    public List<EmployeeDTO> findAll() {
+        return employeeRepository.findAllByIdIsNotNull();
     }
 }
 
