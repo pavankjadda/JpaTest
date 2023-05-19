@@ -10,17 +10,17 @@ spring:
       FAIL_ON_EMPTY_BEANS: false
 
   # PRES SQL Server datasource Properties
-  datasource:
-    url: jdbc:mysql://localhost:33061/jpa_test
-    username: root
-    password: Test@2020
-    driver-class-name: com.mysql.cj.jdbc.Driver
+  #  datasource:
+  #    url: jdbc:mysql://localhost:33061/jpa_test
+  #    username: root
+  #    password: Test@2020
+  #    driver-class-name: com.mysql.cj.jdbc.Driver
 
-#  datasource:
-#    url: jdbc:sqlserver://localhost:1433;databaseName=jpa_test;encrypt=false
-#    username: sa
-#    password: Test@2020
-#    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=jpa_test;encrypt=false
+    username: sa
+    password: Test@2020
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
 
   # JPA properties
   jpa:
