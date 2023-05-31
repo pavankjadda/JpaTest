@@ -2,12 +2,18 @@ package com.pj.jpatest.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
 
 import java.io.Serializable;
+
+import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
+
 
 @Entity
 @Table(name = "person")
 @Data
+@Audited(targetAuditMode = NOT_AUDITED, withModifiedFlag = true)
 public class Person implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +26,7 @@ public class Person implements Serializable {
     @Embedded
     @AttributeOverrides(value = {@AttributeOverride(name = "addressLine1", column = @Column(name = "streetName")),
             @AttributeOverride(name = "addressLine2", column = @Column(name = "apartmentNumber"))})
+    @NotAudited
     private Address homeAddress;
 
 }

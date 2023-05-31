@@ -1,17 +1,17 @@
 package com.pj.jpatest.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.envers.Audited;
 
 @Entity
-@Table(name = "state")
+@Table(name = "book_type")
 @Data
 @Audited(withModifiedFlag = true)
-public class State {
+public class BookType {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 }

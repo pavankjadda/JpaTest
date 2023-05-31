@@ -1,11 +1,13 @@
 package com.pj.jpatest.repository;
 
-import com.pj.jpatest.domain.Person;
+import com.pj.jpatest.domain.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.history.RevisionRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PersonRepository extends JpaRepository<Person, Long>, RevisionRepository<Person, Long, Integer> {
+public interface BookRepository extends JpaRepository<Book, Long>, RevisionRepository<Book, Long, Integer> {
+    Book findByTitle(String title);
 
+    Book findByIsbn(String isbn);
 }

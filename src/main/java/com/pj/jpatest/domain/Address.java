@@ -5,9 +5,11 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
+import org.hibernate.envers.Audited;
 
 @Embeddable
 @Data
+@Audited(withModifiedFlag = true)
 public class Address {
     private String addressLine1;
     private String addressLine2;

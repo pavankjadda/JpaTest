@@ -25,12 +25,22 @@ spring:
   # JPA properties
   jpa:
     generate-ddl: true
+    open-in-view: true
     properties:
       hibernate:
         jdbc:
           time_zone: UTC
-        ddl-auto: update
+          batch_size: 30
+        ddl-auto: none
         show_sql: false
+        format_sql: false
+        order_inserts: true
+        order_updates: true
+        type:
+          preferred_instant_jdbc_type: TIMESTAMP
+        envers:
+          audit_strategy: org.hibernate.envers.strategy.ValidityAuditStrategy
+          global_with_modified_flag: true
 
 
   # Spring Session properties

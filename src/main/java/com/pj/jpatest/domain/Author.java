@@ -7,10 +7,10 @@ import org.hibernate.envers.Audited;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "employee")
+@Table(name = "author")
 @Data
 @Audited(withModifiedFlag = true)
-public class Employee implements Serializable {
+public class Author implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,10 +18,4 @@ public class Employee implements Serializable {
     private String lastName;
     private String email;
     private String phoneNumber;
-
-    @Embedded
-    @AttributeOverrides(value = {@AttributeOverride(name = "addressLine1", column = @Column(name = "streetName")),
-            @AttributeOverride(name = "addressLine2", column = @Column(name = "apartmentNumber"))})
-    private Address homeAddress;
-
 }

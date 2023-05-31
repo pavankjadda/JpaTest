@@ -3,9 +3,8 @@ package com.pj.jpatest.web;
 import com.pj.jpatest.domain.Address;
 import com.pj.jpatest.domain.Person;
 import com.pj.jpatest.repository.PersonRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.history.Revisions;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Random;
 
@@ -49,5 +48,29 @@ public class PersonController {
         address.setZipCode("12345");
         person.setHomeAddress(address);
         return personRepository.saveAndFlush(person);
+    }
+
+    @GetMapping("/update/{id}")
+    public Person update(@PathVariable Long id) {
+        var personOptional = personRepository.findById(id);
+        if (personOptional.isPresent()) {
+            var person = personOptional.get();
+            person.setFirstName("Jack");
+            person.setLastName("Ryan");
+            person.setEmail("jdoe@example.com");
+            person.setPhoneNumber("123-456-7890");
+            return personRepository.saveAndFlush(person);
+        }
+        return null;
+    }
+
+    @GetMapping("/revisions/{id}")
+    public Revisions<Integer, Person> getRevisions(@PathVariable Long id) {
+        return personRepository.findRevisions(id);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteById(@PathVariable Long id) {
+        personRepository.deleteById(id);
     }
 }
