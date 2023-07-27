@@ -1,8 +1,12 @@
 package com.pj.jpatest.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.envers.Audited;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "book")
@@ -21,4 +25,11 @@ public class Book {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_type_id")
     private BookType bookType;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "book_author",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
+    @JsonManagedReference
+    private List<Author> authors = new ArrayList<>();
 }

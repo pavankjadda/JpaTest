@@ -1,6 +1,8 @@
 package com.pj.jpatest.web;
 
+import com.pj.jpatest.domain.Author;
 import com.pj.jpatest.domain.Book;
+import com.pj.jpatest.repository.AuthorRepository;
 import com.pj.jpatest.repository.BookRepository;
 import com.pj.jpatest.repository.BookTypeRepository;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +22,12 @@ import java.util.List;
 public class BookController {
     private final BookRepository bookRepository;
     private final BookTypeRepository bookTypeRepository;
+    private final AuthorRepository authorRepository;
 
-    public BookController(BookRepository bookRepository, BookTypeRepository bookTypeRepository) {
+    public BookController(BookRepository bookRepository, BookTypeRepository bookTypeRepository, AuthorRepository authorRepository) {
         this.bookRepository = bookRepository;
         this.bookTypeRepository = bookTypeRepository;
+        this.authorRepository = authorRepository;
     }
 
     /**
@@ -75,6 +79,8 @@ public class BookController {
         book.setYearOfPublication(2019);
         book.setPublisher("Personal Publication");
         book.setBookType(bookTypeRepository.findByName("Kindle"));
+        var author = authorRepository.saveAndFlush(new Author("John", "Doe", "jdoe@example.com", "123-456-7890"));
+        book.getAuthors().add(author);
         return bookRepository.saveAndFlush(book);
     }
 }
