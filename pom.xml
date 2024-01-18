@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.4</version>
+        <version>3.2.0</version>
         <relativePath/>
     </parent>
     <groupId>com.pj</groupId>
@@ -44,6 +44,7 @@
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
+            <version>12.4.2.jre11</version>
             <version>12.2.0.jre11</version>
         </dependency>
         <dependency>
@@ -54,6 +55,7 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-envers</artifactId>
+            <version>3.2.0</version>
         </dependency>
 
         <dependency>
