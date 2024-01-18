@@ -18,7 +18,6 @@ public class Author implements Serializable {
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "authors")
     @JsonBackReference
     List<Book> books = new ArrayList<>();
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

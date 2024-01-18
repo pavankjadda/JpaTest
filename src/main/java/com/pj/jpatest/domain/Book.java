@@ -26,7 +26,7 @@ public class Book {
     @JoinColumn(name = "book_type_id")
     private BookType bookType;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "book_author",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))

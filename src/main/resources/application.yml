@@ -1,3 +1,8 @@
+### Logging config file
+logging:
+  level:
+    org.hibernate.event.spi: DEBUG
+    org.hibernate.event: INFO
 server:
   port: 8081
 
@@ -9,19 +14,24 @@ spring:
     serialization:
       FAIL_ON_EMPTY_BEANS: false
 
-  # PRES SQL Server datasource Properties
-  #  datasource:
-  #    url: jdbc:mysql://localhost:33061/jpa_test
-  #    username: root
-  #    password: Test@2020
-  #    driver-class-name: com.mysql.cj.jdbc.Driver
+    # SQL Server datasource Properties
+    #    datasource:
+    #      url: jdbc:mysql://localhost:33061/jpa_test
+    #      username: root
+    #      password: Test@2020
+    #      driver-class-name: com.mysql.cj.jdbc.Driver
+    #
+    #  datasource:
+    #    url: jdbc:postgresql://localhost:5432/jpa_test
+    #    username: root
+    #    password: Test@2020
+    #driver-class-name: org.postgresql.Driver
 
   datasource:
     url: jdbc:sqlserver://localhost:1433;databaseName=jpa_test;encrypt=false
     username: sa
     password: Test@2020
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-
   # JPA properties
   jpa:
     generate-ddl: true

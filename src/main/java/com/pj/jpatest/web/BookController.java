@@ -5,6 +5,7 @@ import com.pj.jpatest.domain.Book;
 import com.pj.jpatest.repository.AuthorRepository;
 import com.pj.jpatest.repository.BookRepository;
 import com.pj.jpatest.repository.BookTypeRepository;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -82,5 +83,10 @@ public class BookController {
         var author = authorRepository.saveAndFlush(new Author("John", "Doe", "jdoe@example.com", "123-456-7890"));
         book.getAuthors().add(author);
         return bookRepository.saveAndFlush(book);
+    }
+
+    @DeleteMapping("/delete")
+    public void deleteBook() {
+        bookRepository.deleteByIsbn("978-1-4842-3925-4");
     }
 }
