@@ -1,8 +1,10 @@
-### Logging config file
 logging:
   level:
-    org.hibernate.event.spi: DEBUG
-    org.hibernate.event: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.SQL_SLOW: DEBUG
+    org.hibernate.stat: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
+
 server:
   port: 8081
 
@@ -14,18 +16,18 @@ spring:
     serialization:
       FAIL_ON_EMPTY_BEANS: false
 
-    # SQL Server datasource Properties
-    #    datasource:
-    #      url: jdbc:mysql://localhost:33061/jpa_test
-    #      username: root
-    #      password: Test@2020
-    #      driver-class-name: com.mysql.cj.jdbc.Driver
-    #
-    #  datasource:
-    #    url: jdbc:postgresql://localhost:5432/jpa_test
-    #    username: root
-    #    password: Test@2020
-    #driver-class-name: org.postgresql.Driver
+  # PRES SQL Server datasource Properties
+  #  datasource:
+  #    url: jdbc:mysql://localhost:33061/jpa_test
+  #    username: root
+  #    password: Test#12345
+  #    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  #  datasource:
+  #    url: jdbc:postgresql://localhost:5432/jpa_test
+  #    username: root
+  #    password: Test@2020
+  #    driver-class-name: org.postgresql.Driver
 
   datasource:
     url: jdbc:sqlserver://localhost:1433;databaseName=jpa_test;encrypt=false
@@ -47,11 +49,13 @@ spring:
         format_sql: false
         order_inserts: true
         order_updates: true
+        pretty_print: true
         type:
           preferred_instant_jdbc_type: TIMESTAMP
         envers:
           audit_strategy: org.hibernate.envers.strategy.ValidityAuditStrategy
           global_with_modified_flag: true
+        generate_statistics: true
 
 
   # Spring Session properties
