@@ -64,4 +64,3 @@ spring:
       table-name: SPRING_SESSION
       initialize-schema: always
     timeout: 1h
-    store-type: jdbc
