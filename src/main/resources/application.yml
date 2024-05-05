@@ -55,7 +55,7 @@ spring:
         envers:
           audit_strategy: org.hibernate.envers.strategy.ValidityAuditStrategy
           global_with_modified_flag: true
-        generate_statistics: true
+        generate_statistics: false
 
 
   # Spring Session properties
