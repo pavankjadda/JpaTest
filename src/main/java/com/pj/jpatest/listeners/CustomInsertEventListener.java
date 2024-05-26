@@ -1,34 +1,23 @@
 package com.pj.jpatest.listeners;
 
 import jakarta.persistence.EntityManager;
-import org.hibernate.event.spi.*;
+import org.hibernate.event.spi.PostInsertEvent;
+import org.hibernate.event.spi.PostInsertEventListener;
 import org.hibernate.persister.entity.EntityPersister;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CustomSaveOrUpdateEventListener implements PostDeleteEventListener, PostInsertEventListener, PostUpdateEventListener {
+public class CustomInsertEventListener implements PostInsertEventListener {
     private final EntityManager entityManager;
 
-    public CustomSaveOrUpdateEventListener(EntityManager entityManager) {
+    public CustomInsertEventListener(EntityManager entityManager) {
         this.entityManager = entityManager;
-    }
-
-    @Override
-    public void onPostDelete(PostDeleteEvent event) {
-        final Object entity = event.getEntity();
-        System.out.println("CustomSaveOrUpdateEventListener.onPostDelete: " + entity);
     }
 
     @Override
     public void onPostInsert(PostInsertEvent event) {
         final Object entity = event.getEntity();
-        System.out.println("CustomSaveOrUpdateEventListener.onPostInsert: " + entity);
-    }
-
-    @Override
-    public void onPostUpdate(PostUpdateEvent event) {
-        final Object entity = event.getEntity();
-        System.out.println("CustomSaveOrUpdateEventListener.onPostUpdate: " + entity);
+        System.out.println("CustomInsertEventListener.onPostInsert: " + entity);
     }
 
     /**

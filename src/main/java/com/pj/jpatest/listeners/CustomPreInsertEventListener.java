@@ -22,7 +22,7 @@ public class CustomPreInsertEventListener implements PreInsertEventListener, Pre
     @Override
     public boolean onPreDelete(PreDeleteEvent event) {
         final Object entity = event.getEntity();
-
+        
         System.out.println("CustomPreInsertEventListener.onPreDelete: " + entity);
         return false;
     }

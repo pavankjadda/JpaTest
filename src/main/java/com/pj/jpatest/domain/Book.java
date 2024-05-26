@@ -1,6 +1,7 @@
 package com.pj.jpatest.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.pj.jpatest.listeners.BookUpdateEventListener;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.envers.Audited;
@@ -12,6 +13,7 @@ import java.util.List;
 @Table(name = "book")
 @Data
 @Audited(withModifiedFlag = true)
+@EntityListeners(BookUpdateEventListener.class)
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +30,8 @@ public class Book {
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "book_author",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id"))
+               joinColumns = @JoinColumn(name = "book_id"),
+               inverseJoinColumns = @JoinColumn(name = "author_id"))
     @JsonManagedReference
     private List<Author> authors = new ArrayList<>();
 }
