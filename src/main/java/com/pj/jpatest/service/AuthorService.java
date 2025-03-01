@@ -1,7 +1,11 @@
 package com.pj.jpatest.service;
 
-public interface AuthorService {
-    void delete(String email);
+import com.pj.jpatest.domain.Author;
 
-    void updateTransactional();
+public interface AuthorService {
+    Author createNewAuthor();
+
+    void update(String email);
+
+    void delete(String email);
 }

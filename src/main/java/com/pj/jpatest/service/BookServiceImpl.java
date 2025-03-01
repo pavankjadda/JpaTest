@@ -8,9 +8,8 @@ import com.pj.jpatest.repository.BookRepository;
 import com.pj.jpatest.repository.BookTypeRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.Collection;
+import java.util.List;
 
 @Service
 @Transactional
@@ -34,7 +33,7 @@ public class BookServiceImpl implements BookService {
      * @since 1.0.0
      */
     @Override
-    public Collection<BookInfo> findAll() {
+    public List<BookInfo> findAll() {
         return bookRepository.findAllByIsbnIsNotNull();
     }
 
@@ -67,7 +66,7 @@ public class BookServiceImpl implements BookService {
      * @since 1.0.0
      */
     @Override
-    public Book updateBook(@PathVariable Long id) {
+    public Book updateBook(Long id) {
         var book = bookRepository.getReferenceById(id);
         book.setTitle("Spring Boot 3 Recipes");
         book.setEdition(2);
@@ -80,7 +79,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void deleteBook(@PathVariable Long id) {
+    public void deleteBook(Long id) {
         bookRepository.deleteById(id);
     }
 }

@@ -11,7 +11,7 @@ server:
 ### Spring Properties
 spring:
   application:
-    name: pres
+    name: jps-test
   jackson:
     serialization:
       FAIL_ON_EMPTY_BEANS: false
@@ -56,11 +56,3 @@ spring:
           audit_strategy: org.hibernate.envers.strategy.ValidityAuditStrategy
           global_with_modified_flag: true
         generate_statistics: false
-
-
-  # Spring Session properties
-  session:
-    jdbc:
-      table-name: SPRING_SESSION
-      initialize-schema: always
-    timeout: 1h

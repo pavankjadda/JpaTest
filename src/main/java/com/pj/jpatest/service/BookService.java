@@ -4,7 +4,7 @@ import com.pj.jpatest.domain.Book;
 import com.pj.jpatest.dto.BookInfo;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.Collection;
+import java.util.List;
 
 public interface BookService {
     /**
@@ -15,7 +15,7 @@ public interface BookService {
      * @author Pavan Kumar Jadda
      * @since 1.0.0
      */
-    Collection<BookInfo> findAll();
+    List<BookInfo> findAll();
 
     /**
      * Create a new Book and persist it to the database.

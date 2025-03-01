@@ -5,7 +5,7 @@ import com.pj.jpatest.dto.BookInfo;
 import com.pj.jpatest.service.BookService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Provides a REST API endpoints for the Book entity.
@@ -31,7 +31,7 @@ public class BookController {
      * @since 1.0.0
      */
     @GetMapping("/find/all")
-    public Collection<BookInfo> findAll() {
+    public List<BookInfo> findAll() {
         return service.findAll();
     }
 

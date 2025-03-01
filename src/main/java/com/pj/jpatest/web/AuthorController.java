@@ -1,11 +1,9 @@
 package com.pj.jpatest.web;
 
 import com.pj.jpatest.domain.Author;
-import com.pj.jpatest.domain.AuthorLog;
 import com.pj.jpatest.repository.AuthorLogRepository;
 import com.pj.jpatest.repository.AuthorRepository;
 import com.pj.jpatest.service.AuthorService;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,12 +53,7 @@ public class AuthorController {
      */
     @GetMapping("/create")
     public Author createNewAuthor() {
-        Author author = new Author();
-        author.setFirstName("John");
-        author.setLastName("Doe");
-        author.setEmail("jdoe2@example.com");
-        author.setPhoneNumber("1234567890");
-        return authorRepository.saveAndFlush(author);
+        return authorService.createNewAuthor();
     }
 
     /**
@@ -71,30 +64,17 @@ public class AuthorController {
      */
     @GetMapping("/update/{email}")
     public void update(@PathVariable String email) {
-        var author = authorRepository.findByEmail(email);
-        if (author != null) {
-            author.setFirstName("John");
-            author.setLastName("Doe");
-            author.setEmail("jdoe2@example.com");
-            author.setPhoneNumber("1234567890");
-            authorRepository.saveAndFlush(author);
-            saveLog(author.getFirstName(), author.getLastName(), author.getEmail(), author.getPhoneNumber());
-        }
+        authorService.update(email);
     }
 
-    @Async
-    protected void saveLog(String firstName, String lastName, String email, String phoneNumber) {
-        var authorLog = new AuthorLog();
-        authorLog.setFirstName(firstName);
-        authorLog.setLastName(lastName);
-        authorLog.setEmail(email);
-        authorLog.setPhoneNumber(phoneNumber);
-        authorLogRepository.saveAndFlush(authorLog);
-        System.out.println("Saved authorLog in thread:" + Thread.currentThread().getName());
-    }
-
-    @GetMapping("/test")
-    public void updateTransactional() {
-        authorService.updateTransactional();
+    /**
+     * Deleted the Author by email
+     *
+     * @author Pavan Kumar Jadda
+     * @since 1.0.0
+     */
+    @GetMapping("/delete/{email}")
+    public void delete(@PathVariable String email) {
+        authorService.delete(email);
     }
 }
