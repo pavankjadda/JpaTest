@@ -1,14 +1,20 @@
 package com.pj.jpatest.domain;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.envers.Audited;
 
 import java.io.Serializable;
 
 @Entity
 @Table(name = "employee")
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Audited(withModifiedFlag = true)
 public class Employee implements Serializable {
     @Id
@@ -18,7 +24,7 @@ public class Employee implements Serializable {
     private String lastName;
     private String email;
     private String phoneNumber;
-
+    
     @Embedded
     @AttributeOverrides(value = {@AttributeOverride(name = "addressLine1", column = @Column(name = "streetName")),
             @AttributeOverride(name = "addressLine2", column = @Column(name = "apartmentNumber"))})

@@ -1,11 +1,15 @@
 package com.pj.jpatest.domain;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.Objects;
 
 @Entity
 @Table(name = "author_log")
-@Data
+@Getter
+@Setter
 public class AuthorLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,4 +18,28 @@ public class AuthorLog {
     private String lastName;
     private String email;
     private String phoneNumber;
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, email, phoneNumber);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof AuthorLog authorLog)) return false;
+        return Objects.equals(id, authorLog.id) && Objects.equals(firstName, authorLog.firstName) &&
+                Objects.equals(lastName, authorLog.lastName) && Objects.equals(email, authorLog.email) &&
+                Objects.equals(phoneNumber, authorLog.phoneNumber);
+    }
+
+    @Override
+    public String toString() {
+        return "AuthorLog{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
 }

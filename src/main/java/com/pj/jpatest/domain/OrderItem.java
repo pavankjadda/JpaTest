@@ -2,13 +2,17 @@ package com.pj.jpatest.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
 
 @Entity
 @Table(name = "order_item")
-@Data
+@Getter
+@Setter
+@ToString
 public class OrderItem implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +24,7 @@ public class OrderItem implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     @JsonBackReference
+    @ToString.Exclude
     private Order order;
 
     public OrderItem(String name) {

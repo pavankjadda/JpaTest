@@ -12,6 +12,7 @@ public class BookLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "message", columnDefinition = "varchar(255)")
     private String message;
     private Instant createdDate;
     private String createdBy;

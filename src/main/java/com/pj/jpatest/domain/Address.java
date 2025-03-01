@@ -4,11 +4,17 @@ import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.envers.Audited;
 
 @Embeddable
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Audited(withModifiedFlag = true)
 public class Address {
     private String addressLine1;
@@ -18,9 +24,11 @@ public class Address {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "state_id")
+    @ToString.Exclude
     private State state;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id")
+    @ToString.Exclude
     private Country country;
 }

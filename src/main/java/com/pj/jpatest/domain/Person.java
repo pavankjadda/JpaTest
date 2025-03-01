@@ -1,7 +1,10 @@
 package com.pj.jpatest.domain;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.NotAudited;
 
@@ -9,10 +12,12 @@ import java.io.Serializable;
 
 import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 
-
 @Entity
 @Table(name = "person")
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Audited(targetAuditMode = NOT_AUDITED, withModifiedFlag = true)
 public class Person implements Serializable {
     @Id
