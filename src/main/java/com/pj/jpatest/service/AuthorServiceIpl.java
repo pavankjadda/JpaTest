@@ -6,9 +6,11 @@ import com.pj.jpatest.repository.AuthorLogRepository;
 import com.pj.jpatest.repository.AuthorRepository;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
+@Transactional
 public class AuthorServiceIpl implements AuthorService {
     private final AuthorRepository authorRepository;
     private final AuthorLogRepository authorLogRepository;
@@ -25,7 +27,7 @@ public class AuthorServiceIpl implements AuthorService {
         author.setLastName("Doe");
         author.setEmail("jdoe2@example.com");
         author.setPhoneNumber("1234567890");
-        return authorRepository.saveAndFlush(author);
+        return authorRepository.save(author);
     }
 
     @Override
@@ -36,7 +38,7 @@ public class AuthorServiceIpl implements AuthorService {
             author.setLastName("Doe");
             author.setEmail("jdoe2@example.com");
             author.setPhoneNumber("1234567890");
-            authorRepository.saveAndFlush(author);
+            authorRepository.save(author);
             saveLog(author.getFirstName(), author.getLastName(), author.getEmail(), author.getPhoneNumber());
         }
     }

@@ -1,7 +1,6 @@
 package com.pj.jpatest.web;
 
 import com.pj.jpatest.domain.Author;
-import com.pj.jpatest.repository.AuthorLogRepository;
 import com.pj.jpatest.repository.AuthorRepository;
 import com.pj.jpatest.service.AuthorService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,12 +21,10 @@ import java.util.List;
 public class AuthorController {
     private final AuthorRepository authorRepository;
     private final AuthorService authorService;
-    private final AuthorLogRepository authorLogRepository;
 
-    public AuthorController(AuthorRepository authorRepository, AuthorService authorService, AuthorLogRepository authorLogRepository) {
+    public AuthorController(AuthorRepository authorRepository, AuthorService authorService) {
         this.authorRepository = authorRepository;
         this.authorService = authorService;
-        this.authorLogRepository = authorLogRepository;
     }
 
     /**
