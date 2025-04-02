@@ -2,21 +2,25 @@ package com.pj.jpatest.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.envers.Audited;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "author")
-@Data
+@Getter
+@Setter
 @Audited(withModifiedFlag = true)
 public class Author implements Serializable {
-
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "authors")
     @JsonBackReference
+    @ToString.Exclude
     List<Book> books = new ArrayList<>();
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +31,7 @@ public class Author implements Serializable {
     private String phoneNumber;
 
     public Author() {
+        // Default constructor
     }
 
     public Author(String firstName, String lastName, String email, String phoneNumber) {
@@ -34,5 +39,29 @@ public class Author implements Serializable {
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, email, phoneNumber);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Author author)) return false;
+        return Objects.equals(id, author.id) && Objects.equals(firstName, author.firstName) &&
+                Objects.equals(lastName, author.lastName) && Objects.equals(email, author.email) &&
+                Objects.equals(phoneNumber, author.phoneNumber);
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
     }
 }

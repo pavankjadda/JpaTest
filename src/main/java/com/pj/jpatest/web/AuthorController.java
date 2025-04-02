@@ -1,11 +1,7 @@
 package com.pj.jpatest.web;
 
 import com.pj.jpatest.domain.Author;
-import com.pj.jpatest.domain.AuthorLog;
-import com.pj.jpatest.repository.AuthorLogRepository;
-import com.pj.jpatest.repository.AuthorRepository;
 import com.pj.jpatest.service.AuthorService;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,14 +18,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/author")
 public class AuthorController {
-    private final AuthorRepository authorRepository;
     private final AuthorService authorService;
-    private final AuthorLogRepository authorLogRepository;
 
-    public AuthorController(AuthorRepository authorRepository, AuthorService authorService, AuthorLogRepository authorLogRepository) {
-        this.authorRepository = authorRepository;
+    public AuthorController(AuthorService authorService) {
         this.authorService = authorService;
-        this.authorLogRepository = authorLogRepository;
     }
 
     /**
@@ -42,7 +34,7 @@ public class AuthorController {
      */
     @GetMapping("/find/all")
     public List<Author> findAll() {
-        return authorRepository.findAll();
+        return authorService.findAll();
     }
 
     /**
@@ -55,42 +47,23 @@ public class AuthorController {
      */
     @GetMapping("/create")
     public Author createNewAuthor() {
-        Author author = new Author();
-        author.setFirstName("John");
-        author.setLastName("Doe");
-        author.setEmail("jdoe2@example.com");
-        author.setPhoneNumber("1234567890");
-        return authorRepository.saveAndFlush(author);
+        return authorService.createNewAuthor();
     }
 
     /**
      * Update the Author and persist it to the database.
      *
+     * @param email the email of the Author to be updated
+     *
+     * @return the updated Author
+     *
      * @author Pavan Kumar Jadda
      * @since 1.0.0
      */
     @GetMapping("/update/{email}")
-    public void update(@PathVariable String email) {
-        var author = authorRepository.findByEmail(email);
-        if (author != null) {
-            author.setFirstName("John");
-            author.setLastName("Doe");
-            author.setEmail("jdoe2@example.com");
-            author.setPhoneNumber("1234567890");
-            authorRepository.saveAndFlush(author);
-            saveLog(author.getFirstName(), author.getLastName(), author.getEmail(), author.getPhoneNumber());
-        }
-    }
+    public Author update(@PathVariable String email) {
+        return authorService.update(email);
 
-    @Async
-    protected void saveLog(String firstName, String lastName, String email, String phoneNumber) {
-        var authorLog = new AuthorLog();
-        authorLog.setFirstName(firstName);
-        authorLog.setLastName(lastName);
-        authorLog.setEmail(email);
-        authorLog.setPhoneNumber(phoneNumber);
-        authorLogRepository.saveAndFlush(authorLog);
-        System.out.println("Saved authorLog in thread:" + Thread.currentThread().getName());
     }
 
     @GetMapping("/test")

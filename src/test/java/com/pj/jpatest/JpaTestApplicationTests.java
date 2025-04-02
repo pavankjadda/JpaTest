@@ -9,8 +9,7 @@ import java.time.LocalDate;
 
 class JpaTestApplicationTests {
     public static void main(String[] args) {
-        ObjectMapper mapper = new ObjectMapper().findAndRegisterModules()
-                .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+        ObjectMapper mapper = new ObjectMapper().findAndRegisterModules().configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         try {
             var response = mapper.readValue("""
                     {

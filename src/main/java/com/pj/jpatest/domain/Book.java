@@ -3,15 +3,20 @@ package com.pj.jpatest.domain;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.pj.jpatest.listeners.BookUpdateEventListener;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.hibernate.envers.Audited;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "book")
-@Data
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Audited(withModifiedFlag = true)
 @EntityListeners(BookUpdateEventListener.class)
 public class Book {
@@ -28,10 +33,36 @@ public class Book {
     @JoinColumn(name = "book_type_id")
     private BookType bookType;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(name = "book_author",
                joinColumns = @JoinColumn(name = "book_id"),
                inverseJoinColumns = @JoinColumn(name = "author_id"))
     @JsonManagedReference
     private List<Author> authors = new ArrayList<>();
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, isbn, edition, yearOfPublication, publisher, bookType);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Book book)) return false;
+        return Objects.equals(id, book.id) && Objects.equals(title, book.title) && Objects.equals(isbn, book.isbn) &&
+                Objects.equals(edition, book.edition) && Objects.equals(yearOfPublication, book.yearOfPublication) &&
+                Objects.equals(publisher, book.publisher) && Objects.equals(bookType, book.bookType);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookType=" + bookType +
+                ", publisher='" + publisher + '\'' +
+                ", yearOfPublication=" + yearOfPublication +
+                ", edition=" + edition +
+                ", isbn='" + isbn + '\'' +
+                ", title='" + title + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }
