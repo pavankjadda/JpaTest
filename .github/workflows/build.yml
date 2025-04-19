@@ -1,0 +1,35 @@
+name: Build
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  # Build and test Java project using Maven
+  java:
+    name: Java Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      # Check out current repository
+      - name: Fetch Sources
+        uses: actions/checkout@v4
+
+      # Set up Java environment
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      # Cache Maven dependencies
+      - name: Cache Maven Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            maven-
+
+      # Build with Maven
+      - name: Build and Test
+        run: mvn clean package --DskipTests
