@@ -32,4 +32,4 @@ jobs:
 
       # Build with Maven
       - name: Build and Test
-        run: mvn clean package --DskipTests
+        run: mvn clean package -DskipTests
