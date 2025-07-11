@@ -26,13 +26,13 @@ spring:
   #  datasource:
   #    url: jdbc:postgresql://localhost:5432/jpa_test
   #    username: root
-  #    password: Test@2020
+  #    password: Test#12345
   #    driver-class-name: org.postgresql.Driver
 
   datasource:
     url: jdbc:sqlserver://localhost:1433;databaseName=jpa_test;encrypt=false
     username: sa
-    password: Test@2020
+    password: Test#12345
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
 
   # JPA properties
