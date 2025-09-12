@@ -4,8 +4,8 @@ import lombok.Getter;
 
 @Getter
 public enum ProjectType {
-    INTERNAL("Internal"),
-    EXTERNAL("External");
+    Internal("Internal"),
+    External("External");
 
     private final String name;
 

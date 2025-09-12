@@ -23,6 +23,6 @@ public class Project implements Serializable {
     private String description;
     private String location;
 
-    //@Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     private ProjectType projectType;
 }

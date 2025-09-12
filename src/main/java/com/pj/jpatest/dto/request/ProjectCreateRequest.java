@@ -1,4 +1,6 @@
 package com.pj.jpatest.dto.request;
 
-public record ProjectCreateRequest(String name, String description, String location, String type) {
+import jakarta.validation.constraints.NotBlank;
+
+public record ProjectCreateRequest(@NotBlank String name, String description, String location, String type) {
 }
