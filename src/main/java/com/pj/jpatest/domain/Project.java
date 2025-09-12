@@ -15,7 +15,7 @@ import java.io.Serializable;
 @Audited(withModifiedFlag = true)
 public class Project implements Serializable {
     @Serial private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,6 +23,6 @@ public class Project implements Serializable {
     private String description;
     private String location;
 
-    @Enumerated(EnumType.STRING)
+    //@Enumerated(EnumType.STRING)
     private ProjectType projectType;
 }
