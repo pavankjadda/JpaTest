@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.8</version>
+        <version>4.0.0</version>
         <relativePath/>
     </parent>
     <groupId>com.pj</groupId>
@@ -56,7 +56,7 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-envers</artifactId>
-            <version>3.5.6</version>
+            <version>4.0.0</version>
         </dependency>
 
         <dependency>
@@ -77,6 +77,7 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
+            <version>5.5.6</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
