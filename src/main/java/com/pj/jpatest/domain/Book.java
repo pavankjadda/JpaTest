@@ -1,7 +1,6 @@
 package com.pj.jpatest.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.pj.jpatest.listeners.BookUpdateEventListener;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +15,6 @@ import java.util.Objects;
 @Getter
 @Setter
 @Audited(withModifiedFlag = true)
-@EntityListeners(BookUpdateEventListener.class)
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

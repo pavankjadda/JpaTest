@@ -1,5 +1,6 @@
 package com.pj.jpatest.config;
 
+import com.pj.jpatest.listeners.BookUpdateEventListener;
 import com.pj.jpatest.listeners.CustomDeleteEventListener;
 import com.pj.jpatest.listeners.CustomInsertEventListener;
 import com.pj.jpatest.listeners.CustomUpdateEventListener;
@@ -22,15 +23,17 @@ public class HibernateConfig {
     private final CustomDeleteEventListener deleteEventListener;
     private final CustomInsertEventListener insertEventListener;
     private final CustomUpdateEventListener updateEventListener;
+    private final BookUpdateEventListener bookUpdateEventListener;
 
     @PersistenceUnit
     private EntityManagerFactory emf;
 
     public HibernateConfig(CustomInsertEventListener insertEventListener, CustomDeleteEventListener deleteEventListener,
-                           CustomUpdateEventListener updateEventListener) {
+                           CustomUpdateEventListener updateEventListener, BookUpdateEventListener bookUpdateEventListener) {
         this.insertEventListener = insertEventListener;
         this.deleteEventListener = deleteEventListener;
         this.updateEventListener = updateEventListener;
+        this.bookUpdateEventListener = bookUpdateEventListener;
     }
 
     @PostConstruct
@@ -41,6 +44,7 @@ public class HibernateConfig {
 //        registry.getEventListenerGroup(EventType.PRE_UPDATE).appendListener(preInsertEventListener);
 //        registry.getEventListenerGroup(EventType.PRE_DELETE).appendListener(preInsertEventListener);
         registry.getEventListenerGroup(EventType.POST_UPDATE).appendListener(updateEventListener);
+        registry.getEventListenerGroup(EventType.POST_UPDATE).appendListener(bookUpdateEventListener);
         registry.getEventListenerGroup(EventType.POST_INSERT).appendListener(insertEventListener);
         registry.getEventListenerGroup(EventType.POST_DELETE).appendListener(deleteEventListener);
     }
