@@ -33,5 +33,4 @@ public class Person implements Serializable {
             @AttributeOverride(name = "addressLine2", column = @Column(name = "apartmentNumber"))})
     @NotAudited
     private Address homeAddress;
-
 }

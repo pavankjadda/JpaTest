@@ -25,7 +25,7 @@ public class WorkerThread implements Runnable {
                 System.out.println("iPhone 15 present, hence skipping it");
             } else {
                 order.getOrderItems().add(new OrderItem("iPhone 15", order));
-                order = orderRepository.saveAndFlush(order);
+                orderRepository.save(order);
             }
         }
     }

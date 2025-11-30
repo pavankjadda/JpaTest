@@ -12,15 +12,15 @@ import java.util.Random;
 @Service
 @Transactional
 public class PersonServiceImpl implements PersonService {
-    private final PersonRepository personRepository;
+    private final PersonRepository repository;
 
-    public PersonServiceImpl(PersonRepository personRepository) {
-        this.personRepository = personRepository;
+    public PersonServiceImpl(PersonRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public Person create() {
-        Person person = new Person();
+        var person = new Person();
         var personId = new Random().nextLong();
         person.setId(personId);
         person.setFirstName("John");
@@ -34,30 +34,30 @@ public class PersonServiceImpl implements PersonService {
         address.setCity("Cupertino");
         address.setZipCode("12345");
         person.setHomeAddress(address);
-        return personRepository.saveAndFlush(person);
+        return repository.save(person);
     }
 
     @Override
     public Person update(Long id) {
-        var personOptional = personRepository.findById(id);
+        var personOptional = repository.findById(id);
         if (personOptional.isPresent()) {
             var person = personOptional.get();
             person.setFirstName("Jack");
             person.setLastName("Ryan");
             person.setEmail("jdoe@example.com");
             person.setPhoneNumber("123-456-7890");
-            return personRepository.saveAndFlush(person);
+            return repository.save(person);
         }
         return null;
     }
 
     @Override
     public Revisions<Integer, Person> getRevisions(Long id) {
-        return personRepository.findRevisions(id);
+        return repository.findRevisions(id);
     }
 
     @Override
     public void deleteById(Long id) {
-        personRepository.deleteById(id);
+        repository.deleteById(id);
     }
 }

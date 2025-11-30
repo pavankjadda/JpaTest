@@ -47,14 +47,14 @@ public class BookServiceImpl implements BookService {
      */
     @Override
     public Book createNewBook() {
-        Book book = new Book();
+        var book = new Book();
         book.setTitle("Spring Boot 2 Recipes");
         book.setIsbn("978-1-4842-3925-4");
         book.setEdition(1);
         book.setYearOfPublication(2018);
         book.setPublisher("OReilly Media");
         book.setBookType(bookTypeRepository.findByName("Paper Back"));
-        return bookRepository.saveAndFlush(book);
+        return bookRepository.save(book);
     }
 
     /**

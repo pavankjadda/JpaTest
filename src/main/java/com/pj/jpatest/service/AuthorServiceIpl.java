@@ -57,7 +57,7 @@ public class AuthorServiceIpl implements AuthorService {
         authorLog.setLastName(lastName);
         authorLog.setEmail(email);
         authorLog.setPhoneNumber(phoneNumber);
-        authorLogRepository.saveAndFlush(authorLog);
+        authorLogRepository.save(authorLog);
         System.out.println("Saved authorLog in thread:" + Thread.currentThread().getName());
     }
 }

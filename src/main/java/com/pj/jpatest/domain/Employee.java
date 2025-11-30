@@ -29,5 +29,4 @@ public class Employee implements Serializable {
     @AttributeOverrides(value = {@AttributeOverride(name = "addressLine1", column = @Column(name = "streetName")),
             @AttributeOverride(name = "addressLine2", column = @Column(name = "apartmentNumber"))})
     private Address homeAddress;
-
 }
