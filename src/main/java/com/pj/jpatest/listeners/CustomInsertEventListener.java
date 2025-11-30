@@ -1,6 +1,5 @@
 package com.pj.jpatest.listeners;
 
-import jakarta.persistence.EntityManager;
 import org.hibernate.event.spi.PostInsertEvent;
 import org.hibernate.event.spi.PostInsertEventListener;
 import org.hibernate.persister.entity.EntityPersister;
@@ -8,12 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CustomInsertEventListener implements PostInsertEventListener {
-    private final EntityManager entityManager;
-
-    public CustomInsertEventListener(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
     @Override
     public void onPostInsert(PostInsertEvent event) {
         final Object entity = event.getEntity();

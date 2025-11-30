@@ -40,12 +40,11 @@ public class HibernateConfig {
     protected void init() {
         var sessionFactory = emf.unwrap(SessionFactoryImpl.class);
         var registry = sessionFactory.getServiceRegistry().getService(EventListenerRegistry.class);
-//        registry.getEventListenerGroup(EventType.PRE_INSERT).appendListener(preInsertEventListener);
-//        registry.getEventListenerGroup(EventType.PRE_UPDATE).appendListener(preInsertEventListener);
-//        registry.getEventListenerGroup(EventType.PRE_DELETE).appendListener(preInsertEventListener);
-        registry.getEventListenerGroup(EventType.POST_UPDATE).appendListener(updateEventListener);
-        registry.getEventListenerGroup(EventType.POST_UPDATE).appendListener(bookUpdateEventListener);
-        registry.getEventListenerGroup(EventType.POST_INSERT).appendListener(insertEventListener);
-        registry.getEventListenerGroup(EventType.POST_DELETE).appendListener(deleteEventListener);
+        if (registry != null) {
+            registry.getEventListenerGroup(EventType.POST_UPDATE).appendListener(updateEventListener);
+            registry.getEventListenerGroup(EventType.POST_UPDATE).appendListener(bookUpdateEventListener);
+            registry.getEventListenerGroup(EventType.POST_INSERT).appendListener(insertEventListener);
+            registry.getEventListenerGroup(EventType.POST_DELETE).appendListener(deleteEventListener);
+        }
     }
 }

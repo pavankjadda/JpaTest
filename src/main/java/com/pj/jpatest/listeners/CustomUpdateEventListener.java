@@ -1,6 +1,5 @@
 package com.pj.jpatest.listeners;
 
-import jakarta.persistence.EntityManager;
 import org.hibernate.event.spi.PostUpdateEvent;
 import org.hibernate.event.spi.PostUpdateEventListener;
 import org.hibernate.persister.entity.EntityPersister;
@@ -8,12 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CustomUpdateEventListener implements PostUpdateEventListener {
-    private final EntityManager entityManager;
-
-    public CustomUpdateEventListener(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
     @Override
     public void onPostUpdate(PostUpdateEvent event) {
         final Object entity = event.getEntity();

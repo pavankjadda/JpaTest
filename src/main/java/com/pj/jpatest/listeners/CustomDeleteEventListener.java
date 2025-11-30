@@ -1,6 +1,5 @@
 package com.pj.jpatest.listeners;
 
-import jakarta.persistence.EntityManager;
 import org.hibernate.event.spi.PostDeleteEvent;
 import org.hibernate.event.spi.PostDeleteEventListener;
 import org.hibernate.persister.entity.EntityPersister;
@@ -8,12 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CustomDeleteEventListener implements PostDeleteEventListener {
-    private final EntityManager entityManager;
-
-    public CustomDeleteEventListener(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
     @Override
     public void onPostDelete(PostDeleteEvent event) {
         final Object entity = event.getEntity();

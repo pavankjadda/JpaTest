@@ -27,10 +27,6 @@ public class OrderItem implements Serializable {
     @ToString.Exclude
     private Order order;
 
-    public OrderItem(String name) {
-        this.name = name;
-    }
-
     public OrderItem() {
 
     }
