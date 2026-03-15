@@ -44,10 +44,8 @@ public class OrderServiceImpl implements OrderService {
         order = repository.save(order);
         System.out.println("Time after order save:" + LocalDateTime.now());
 
-        var items = order.getOrderItems();
         System.out.println("Time before same items order save:" + LocalDateTime.now());
-        items.add(new OrderItem("iPhone 8", order));
-        order.getOrderItems().addAll(items);
+        order.getOrderItems().add(new OrderItem("iPhone 8", order));
         order = repository.save(order);
         System.out.println("Time after same items  order save:" + LocalDateTime.now());
         return order;

@@ -8,4 +8,6 @@ public interface AuthorService {
     void update(String email);
 
     void delete(String email);
+
+    void saveLog(String firstName, String lastName, String email, String phoneNumber);
 }

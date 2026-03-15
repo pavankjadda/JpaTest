@@ -21,8 +21,6 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public Person create() {
         var person = new Person();
-        var personId = new Random().nextLong();
-        person.setId(personId);
         person.setFirstName("John");
         person.setLastName("Doe");
         person.setEmail("jdoe@example.com");

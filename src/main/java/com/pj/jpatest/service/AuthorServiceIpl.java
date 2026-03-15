@@ -1,23 +1,28 @@
 package com.pj.jpatest.service;
 
-import com.pj.jpatest.domain.Author;
-import com.pj.jpatest.domain.AuthorLog;
-import com.pj.jpatest.repository.AuthorLogRepository;
-import com.pj.jpatest.repository.AuthorRepository;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import com.pj.jpatest.domain.Author;
+import com.pj.jpatest.domain.AuthorLog;
+import com.pj.jpatest.repository.AuthorLogRepository;
+import com.pj.jpatest.repository.AuthorRepository;
 
 @Service
 @Transactional
 public class AuthorServiceIpl implements AuthorService {
     private final AuthorRepository authorRepository;
     private final AuthorLogRepository authorLogRepository;
+    private final AuthorService self;   
 
-    public AuthorServiceIpl(AuthorRepository authorRepository, AuthorLogRepository authorLogRepository) {
+
+    public AuthorServiceIpl(AuthorRepository authorRepository, AuthorLogRepository authorLogRepository,@Lazy AuthorService self) {
         this.authorRepository = authorRepository;
         this.authorLogRepository = authorLogRepository;
+        this.self = self;
     }
 
     @Override
@@ -39,7 +44,7 @@ public class AuthorServiceIpl implements AuthorService {
             author.setEmail("jdoe2@example.com");
             author.setPhoneNumber("1234567890");
             authorRepository.save(author);
-            saveLog(author.getFirstName(), author.getLastName(), author.getEmail(), author.getPhoneNumber());
+            self.saveLog(author.getFirstName(), author.getLastName(), author.getEmail(), author.getPhoneNumber());
         }
     }
 
@@ -51,7 +56,7 @@ public class AuthorServiceIpl implements AuthorService {
     }
 
     @Async
-    protected void saveLog(String firstName, String lastName, String email, String phoneNumber) {
+    public void saveLog(String firstName, String lastName, String email, String phoneNumber) {
         var authorLog = new AuthorLog();
         authorLog.setFirstName(firstName);
         authorLog.setLastName(lastName);
