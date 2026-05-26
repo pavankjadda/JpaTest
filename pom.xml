@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.3</version>
+        <version>4.0.6</version>
         <relativePath/>
     </parent>
     <groupId>com.pj</groupId>
@@ -16,11 +16,12 @@
 
     <properties>
         <java.version>25</java.version>
-        <spring-boot.version>4.0.3</spring-boot.version>
-        <spring-data-envers.version>4.0.4</spring-data-envers.version>
+        <spring-boot.version>4.0.6</spring-boot.version>
+        <spring-data-envers.version>4.0.5</spring-data-envers.version>
         <rest-assured.version>6.0.0</rest-assured.version>
-        <lombok.version>1.18.42</lombok.version>
-        <mysql-connector-j.version>9.5.0</mysql-connector-j.version>
+        <lombok.version>1.18.46</lombok.version>
+        <mssql-jdbc.version>13.4.0.jre11</mssql-jdbc.version>
+        <mysql-connector-j.version>9.7.0</mysql-connector-j.version>
     </properties>
 
     <dependencies>
@@ -41,12 +42,13 @@
 
 
         <!-- Database -->
+        <!--
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <version>${mysql-connector-j.version}</version>
         </dependency>
-        <!--        <dependency>
+                <dependency>
                     <groupId>org.postgresql</groupId>
                     <artifactId>postgresql</artifactId>
                 </dependency>
@@ -55,12 +57,12 @@
                     <artifactId>jcc</artifactId>
                     <version>12.1.3.0</version>
                 </dependency>
-
+-->
                 <dependency>
                     <groupId>com.microsoft.sqlserver</groupId>
                     <artifactId>mssql-jdbc</artifactId>
-                    <version>13.2.1.jre11</version>
-                </dependency>-->
+                    <version>${mssql-jdbc.version}</version>
+                </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>

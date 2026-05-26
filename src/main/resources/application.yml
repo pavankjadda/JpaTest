@@ -17,11 +17,11 @@ spring:
       FAIL_ON_EMPTY_BEANS: false
 
     # PRES SQL Server datasource Properties
-  datasource:
-    url: jdbc:mysql://localhost:3306/jpa_test
-    username: root
-    password: Test#12345
-    driver-class-name: com.mysql.cj.jdbc.Driver
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/jpa_test
+#    username: root
+#    password: Test#12345
+#    driver-class-name: com.mysql.cj.jdbc.Driver
 
   #  datasource:
   #    url: jdbc:postgresql://localhost:5432/jpa_test
@@ -34,11 +34,11 @@ spring:
   #    password: Test#12345
   #    driver-class-name: com.ibm.db2.jcc.DB2Driver
 
-  #  datasource:
-  #    url: jdbc:sqlserver://localhost:1433;databaseName=jpa_test;encrypt=false
-  #    username: sa
-  #    password: Test#12345
-  #    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=jpa_test;encrypt=false
+    username: sa
+    password: Test#12345
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
 
   # JPA properties
   jpa:
