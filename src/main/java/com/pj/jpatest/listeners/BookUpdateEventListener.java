@@ -3,13 +3,12 @@ package com.pj.jpatest.listeners;
 import com.pj.jpatest.domain.Book;
 import com.pj.jpatest.domain.BookLog;
 import jakarta.persistence.EntityManager;
+import java.time.Instant;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.event.spi.PostUpdateEvent;
 import org.hibernate.event.spi.PostUpdateEventListener;
 import org.hibernate.persister.entity.EntityPersister;
 import org.springframework.stereotype.Component;
-
-import java.time.Instant;
 
 @Component
 @Slf4j

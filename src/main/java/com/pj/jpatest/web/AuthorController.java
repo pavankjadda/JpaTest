@@ -3,12 +3,11 @@ package com.pj.jpatest.web;
 import com.pj.jpatest.domain.Author;
 import com.pj.jpatest.repository.AuthorRepository;
 import com.pj.jpatest.service.AuthorService;
+import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * Provides a REST API endpoints for the Author entity.

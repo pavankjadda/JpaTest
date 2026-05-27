@@ -4,12 +4,11 @@ import com.pj.jpatest.domain.Book;
 import com.pj.jpatest.dto.BookDto;
 import com.pj.jpatest.dto.BookInfo;
 import com.pj.jpatest.dto.BookSummary;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.history.RevisionRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long>, RevisionRepository<Book, Long, Integer> {

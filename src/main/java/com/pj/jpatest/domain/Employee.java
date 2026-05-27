@@ -1,13 +1,12 @@
 package com.pj.jpatest.domain;
 
 import jakarta.persistence.*;
+import java.io.Serializable;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.envers.Audited;
-
-import java.io.Serializable;
 
 @Entity
 @Table(name = "employee")

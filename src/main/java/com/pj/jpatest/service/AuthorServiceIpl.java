@@ -1,25 +1,23 @@
 package com.pj.jpatest.service;
 
+import com.pj.jpatest.domain.Author;
+import com.pj.jpatest.domain.AuthorLog;
+import com.pj.jpatest.repository.AuthorLogRepository;
+import com.pj.jpatest.repository.AuthorRepository;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.pj.jpatest.domain.Author;
-import com.pj.jpatest.domain.AuthorLog;
-import com.pj.jpatest.repository.AuthorLogRepository;
-import com.pj.jpatest.repository.AuthorRepository;
-
 @Service
 @Transactional
 public class AuthorServiceIpl implements AuthorService {
     private final AuthorRepository authorRepository;
     private final AuthorLogRepository authorLogRepository;
-    private final AuthorService self;   
+    private final AuthorService self;
 
-
-    public AuthorServiceIpl(AuthorRepository authorRepository, AuthorLogRepository authorLogRepository,@Lazy AuthorService self) {
+    public AuthorServiceIpl(AuthorRepository authorRepository, AuthorLogRepository authorLogRepository, @Lazy AuthorService self) {
         this.authorRepository = authorRepository;
         this.authorLogRepository = authorLogRepository;
         this.self = self;

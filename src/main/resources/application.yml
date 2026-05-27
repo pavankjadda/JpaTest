@@ -17,11 +17,11 @@ spring:
       FAIL_ON_EMPTY_BEANS: false
 
     # PRES SQL Server datasource Properties
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/jpa_test
-#    username: root
-#    password: Test#12345
-#    driver-class-name: com.mysql.cj.jdbc.Driver
+  #  datasource:
+  #    url: jdbc:mysql://localhost:3306/jpa_test
+  #    username: root
+  #    password: Test#12345
+  #    driver-class-name: com.mysql.cj.jdbc.Driver
 
   #  datasource:
   #    url: jdbc:postgresql://localhost:5432/jpa_test
@@ -49,7 +49,7 @@ spring:
         jdbc:
           time_zone: UTC
           batch_size: 30
-        ddl-auto: none
+        ddl-auto: update
         show_sql: false
         format_sql: false
         order_inserts: true
@@ -60,4 +60,6 @@ spring:
         envers:
           audit_strategy: org.hibernate.envers.strategy.ValidityAuditStrategy
           global_with_modified_flag: true
+        audit:
+          strategy: VALIDITY
         generate_statistics: false

@@ -3,9 +3,8 @@ package com.pj.jpatest.web;
 import com.pj.jpatest.domain.Book;
 import com.pj.jpatest.dto.BookInfo;
 import com.pj.jpatest.service.BookService;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Provides a REST API endpoints for the Book entity.

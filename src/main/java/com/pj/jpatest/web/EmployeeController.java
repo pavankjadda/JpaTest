@@ -3,15 +3,14 @@ package com.pj.jpatest.web;
 import com.pj.jpatest.domain.Employee;
 import com.pj.jpatest.dto.EmployeeDTO;
 import com.pj.jpatest.service.EmployeeService;
+import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 /**
- * Provides a REST API endpoints for the Employee entity.
+ * Provides a REST API endpoint for the Employee entity.
  *
  * @author Pavan Kumar Jadda
  * @since 1.0.0

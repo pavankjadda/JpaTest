@@ -6,10 +6,9 @@ import com.pj.jpatest.dto.BookInfo;
 import com.pj.jpatest.repository.AuthorRepository;
 import com.pj.jpatest.repository.BookRepository;
 import com.pj.jpatest.repository.BookTypeRepository;
+import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @Transactional

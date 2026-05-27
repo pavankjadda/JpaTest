@@ -7,8 +7,6 @@ import org.springframework.data.history.Revisions;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Random;
-
 @Service
 @Transactional
 public class PersonServiceImpl implements PersonService {

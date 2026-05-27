@@ -1,12 +1,11 @@
 package com.pj.jpatest.domain;
 
 import jakarta.persistence.*;
+import java.time.Instant;
+import java.util.Objects;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
-import java.time.Instant;
-import java.util.Objects;
 
 @Entity
 @Table(name = "book_log")

@@ -2,13 +2,12 @@ package com.pj.jpatest.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import org.hibernate.envers.Audited;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.envers.Audited;
 
 @Entity
 @Table(name = "book")

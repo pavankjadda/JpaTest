@@ -2,10 +2,9 @@ package com.pj.jpatest.repository;
 
 import com.pj.jpatest.domain.Order;
 import jakarta.persistence.LockModeType;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;
-
-import java.util.Optional;
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
     @Lock(LockModeType.PESSIMISTIC_WRITE)

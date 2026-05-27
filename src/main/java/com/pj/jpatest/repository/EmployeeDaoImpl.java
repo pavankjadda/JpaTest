@@ -3,9 +3,8 @@ package com.pj.jpatest.repository;
 import com.pj.jpatest.domain.Employee;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.springframework.stereotype.Repository;
-
 import java.util.List;
+import org.springframework.stereotype.Repository;
 
 /**
  * Provides a DAO class that uses EntityManager to get employee data rather than Spring Data JPA.

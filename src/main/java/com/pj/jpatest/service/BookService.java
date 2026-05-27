@@ -2,9 +2,8 @@ package com.pj.jpatest.service;
 
 import com.pj.jpatest.domain.Book;
 import com.pj.jpatest.dto.BookInfo;
-import org.springframework.web.bind.annotation.PathVariable;
-
 import java.util.List;
+import org.springframework.web.bind.annotation.PathVariable;
 
 public interface BookService {
     /**
