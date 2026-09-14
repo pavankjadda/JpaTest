@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/order")
 public class OrderController {
-    private final OrderService orderService;
+    private final OrderService service;
 
-    public OrderController(OrderService orderService) {
-        this.orderService = orderService;
+    public OrderController(OrderService service) {
+        this.service = service;
     }
 
     /**
@@ -31,11 +31,11 @@ public class OrderController {
      */
     @GetMapping("/create")
     public Order create() {
-        return orderService.create();
+        return service.create();
     }
 
     @GetMapping("/save")
     public void save() {
-        orderService.save();
+        service.save();
     }
 }

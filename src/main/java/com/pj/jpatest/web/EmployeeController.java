@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/employee")
 public class EmployeeController {
-    private final EmployeeService employeeService;
+    private final EmployeeService service;
 
-    public EmployeeController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
+    public EmployeeController(EmployeeService service) {
+        this.service = service;
     }
 
     /**
@@ -34,7 +34,7 @@ public class EmployeeController {
      */
     @GetMapping("/find/all")
     public List<EmployeeDTO> findAll() {
-        return employeeService.findAll();
+        return service.findAll();
     }
 
     /**
@@ -47,7 +47,7 @@ public class EmployeeController {
      */
     @GetMapping("/find/all/custom")
     public List<Employee> findAllCustomRepository() {
-        return employeeService.findAllCustomRepository();
+        return service.findAllCustomRepository();
     }
 
     /**
@@ -60,7 +60,7 @@ public class EmployeeController {
      */
     @GetMapping("/find/{id}")
     public Employee findById(@PathVariable("id") Long id) {
-        return employeeService.findByIdFromCustomRepository(id);
+        return service.findByIdFromCustomRepository(id);
     }
 
     /**
@@ -73,6 +73,6 @@ public class EmployeeController {
      */
     @GetMapping("/create")
     public Employee createNewEmployee() {
-        return employeeService.createNewEmployee();
+        return service.createNewEmployee();
     }
 }

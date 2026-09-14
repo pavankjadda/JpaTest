@@ -4,6 +4,7 @@ import com.pj.jpatest.domain.Author;
 import com.pj.jpatest.domain.AuthorLog;
 import com.pj.jpatest.repository.AuthorLogRepository;
 import com.pj.jpatest.repository.AuthorRepository;
+import java.util.List;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -62,5 +63,18 @@ public class AuthorServiceIpl implements AuthorService {
         authorLog.setPhoneNumber(phoneNumber);
         authorLogRepository.save(authorLog);
         System.out.println("Saved authorLog in thread:" + Thread.currentThread().getName());
+    }
+
+    /**
+     * Find all Authors in the database.
+     *
+     * @return list of Authors or an empty list if no Authors are found
+     *
+     * @author Pavan Kumar Jadda
+     * @since 1.0.0
+     */
+    @Override
+    public List<Author> findAll() {
+        return authorRepository.findAll();
     }
 }

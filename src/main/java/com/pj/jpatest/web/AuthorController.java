@@ -1,7 +1,6 @@
 package com.pj.jpatest.web;
 
 import com.pj.jpatest.domain.Author;
-import com.pj.jpatest.repository.AuthorRepository;
 import com.pj.jpatest.service.AuthorService;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,12 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/author")
 public class AuthorController {
-    private final AuthorRepository authorRepository;
-    private final AuthorService authorService;
+    private final AuthorService service;
 
-    public AuthorController(AuthorRepository authorRepository, AuthorService authorService) {
-        this.authorRepository = authorRepository;
-        this.authorService = authorService;
+    public AuthorController(AuthorService service) {
+        this.service = service;
     }
 
     /**
@@ -36,7 +33,7 @@ public class AuthorController {
      */
     @GetMapping("/find/all")
     public List<Author> findAll() {
-        return authorRepository.findAll();
+        return service.findAll();
     }
 
     /**
@@ -49,7 +46,7 @@ public class AuthorController {
      */
     @GetMapping("/create")
     public Author createNewAuthor() {
-        return authorService.createNewAuthor();
+        return service.createNewAuthor();
     }
 
     /**
@@ -60,7 +57,7 @@ public class AuthorController {
      */
     @GetMapping("/update/{email}")
     public void update(@PathVariable String email) {
-        authorService.update(email);
+        service.update(email);
     }
 
     /**
@@ -71,6 +68,6 @@ public class AuthorController {
      */
     @GetMapping("/delete/{email}")
     public void delete(@PathVariable String email) {
-        authorService.delete(email);
+        service.delete(email);
     }
 }
