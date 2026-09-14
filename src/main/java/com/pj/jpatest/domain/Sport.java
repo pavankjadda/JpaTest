@@ -4,14 +4,14 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Audited;
+import org.hibernate.envers.Audited;
 
 @Entity
 @Table(name = "sport")
 @Getter
 @Setter
 @NoArgsConstructor
-@Audited()
+@Audited(withModifiedFlag = true)
 public class Sport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
